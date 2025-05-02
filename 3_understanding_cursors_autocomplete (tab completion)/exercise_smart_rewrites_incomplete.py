@@ -1,13 +1,9 @@
 import math
 from typing import List, Dict, Union
+import os
 
-# TODO: Rewrite this function using list comprehension
-def filter_even_numbers(numbers):
-    result = []
-    for num in numbers:
-        if num % 2 == 0:
-            result.append(num)
-    return result
+def filter_even_numbers(numbers: List[int]) -> List[int]:
+    return [num for num in numbers if num % 2 == 0]
 
 # TODO: Rewrite this function using a lambda function
 def multiply_by_two(x):
@@ -15,11 +11,11 @@ def multiply_by_two(x):
 
 # TODO: Rewrite this class using dataclasses
 class Person:
-    def __init__(self, name, age):
+    def __init__(self, name: str, age: int) -> None:
         self.name = name
         self.age = age
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} ({self.age})"
 
 # TODO: Rewrite this function using f-strings
@@ -90,7 +86,9 @@ class Car:
 
 # TODO: Rewrite this function to use a context manager
 def read_file_contents(filename):
-    file = open(filename, 'r')
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(script_dir, filename)
+    file = open(file_path, 'r')
     contents = file.read()
     file.close()
     return contents
